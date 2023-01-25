@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script async src="https://cdn.developer.sas.com/packages/va-report-components/latest/dist/umd/va-report-components.js"></script>
+  <script src="dist/interfaces.js" type="module"></script>
+  <script src="dist/main.js" type="module"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Report Handle</title>
+  <style>
+    .myGraph {
+      width: 100vw;
+      height: 60vh;
+      min-height: 600px;
+      min-width: 600px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid py-2 bg-primary">
+    <h1 style="color:white">SAS VA SDK Demo - ObjectHandle</h1>
+  </div>
+  <form class="m-2 row" id="inputForm">
+    <div class="col-2 mx-auto">
+      <label for="country" class="form-label">Select a country:</label><br>
+      <select id="country"></select>
+    </div>
+    <div class="col-7 mx-auto">
+      <label for="year" class="form-label">Select a year:</label> <span id="yearValue"></span>
+      <input type="range" class="form-range" min="1992" max="2022" id="year">
+    </div>
+  </form>
+  <hr>
+  <div class="row">
+    <sas-report-object id="VAGraph" objectName="ve31" authenticationType="credentials" url="https://live.lts.gel.race.sas.com"
+      reportUri="/reports/reports/5e4c8f21-5bc4-4576-8435-ef876b8d45a9" class="myGraph"></sas-report-object>
+  </div>
+  <div id="info"></div>
+</body>
+
+</html>
