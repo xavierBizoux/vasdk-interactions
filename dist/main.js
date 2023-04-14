@@ -44,6 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("vaReportComponents.loaded", () => __awaiter(void 0, void 0, void 0, function* () {
     // Function to handle user selection for Countries and Year
     const handleFormSelection = (event, targetId) => __awaiter(void 0, void 0, void 0, function* () {
+        // Clear the info table
+        document.getElementById("info").innerHTML = "";
         // Identify which field triggered the function
         const triggeredBy = event.target;
         // Retrieve the form element

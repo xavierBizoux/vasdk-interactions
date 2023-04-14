@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("vaReportComponents.loaded", async () => {
   // Function to handle user selection for Countries and Year
   const handleFormSelection = async (event: Event, targetId: string) => {
+    // Clear the info table
+    document.getElementById("info")!.innerHTML= ""
     // Identify which field triggered the function
     const triggeredBy = event.target as HTMLElement
     // Retrieve the form element
@@ -49,6 +51,7 @@ window.addEventListener("vaReportComponents.loaded", async () => {
     const parameters: Record<string, any> = {
       "Country": countryElement.value
     }
+
     // Retrieve the form element for Year
     const yearElement = form.elements.namedItem("year") as HTMLInputElement
     // Update the year value information when the Year range has been updated
