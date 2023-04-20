@@ -31,13 +31,13 @@
       <select id="country"></select>
     </div>
     <div class="col-7 mx-auto">
-      <label for="year" class="form-label">Select a year:</label> <span id="yearValue"></span>
-      <input type="range" class="form-range" min="1992" max="2022" id="year">
+      <label for="year" class="form-label">Select a year:</label> <span id="yearValue">2022</span>
+      <input type="range" class="form-range" min="1992" max="2022" id="year" value="2022">
     </div>
   </form>
   <hr>
   <div class="row">
-    <sas-report-object id="VAGraph" objectName="ve100" authenticationType="credentials" url="https://livestg.lts.gel.race.sas.com"
+    <sas-report-object id="VAGraph" objectName="ve100" authenticationType="credentials" url="https://live.lts.gel.race.sas.com"
       reportUri="/reports/reports/be6a73f4-82af-44a4-8c53-6dc270532f83" class="myGraph"></sas-report-object>
   </div>
   <div id="info"></div>

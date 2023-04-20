@@ -9,24 +9,42 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 // Function to display data based on the selection done in the VA Object
 const displayData = (data, target) => {
-    // Generate table header based on columns information coming from VA
-    const tableHeader = data.columns.map(column => `<th scope="col">${column.label.toUpperCase()}</th>`);
-    // Generate table rows based on data coming from VA
-    const tableRows = data.data.map((row) => {
-        const cells = row.map((cell) => `<td>${cell}</td>`);
-        return `<tr>${cells.join('')}</tr>`;
+    var _a;
+    // Create a table HTML element
+    const tableEl = document.createElement('table');
+    // Define the CSS classes for the table
+    tableEl.classList.add("table", "table-striped");
+    // Create a table header for the table element
+    const headerEl = tableEl.createTHead();
+    // Add the different column headers
+    data.columns.forEach((column) => {
+        // Create a header cell
+        const headerCell = document.createElement("th");
+        // Define the scope of the header cell
+        headerCell.scope = "col";
+        // Add text to header cell
+        headerCell.innerText = column.label.toUpperCase();
+        // Add the cell to the table header
+        headerEl.appendChild(headerCell);
     });
-    // Build the HTML for the table
-    let tableHTML = `<table class="table table-striped">`;
-    tableHTML += `<thead>`;
-    tableHTML += tableHeader.join('');
-    tableHTML += `</thead>`;
-    tableHTML += `<tbody>`;
-    tableHTML += tableRows.join('');
-    tableHTML += `</tbody>`;
-    tableHTML += `</table>`;
-    // Write the HTML table into the target div
-    document.getElementById(target).innerHTML = tableHTML;
+    // Create a table body for the table
+    const bodyEl = tableEl.createTBody();
+    // Add the different rows to the table body
+    data.data.forEach(row => {
+        // Insert a row element to the table
+        const rowEl = bodyEl.insertRow();
+        // Add the different cells to the row
+        row.forEach((cell) => {
+            // Create a cell
+            const cellEl = document.createElement("td");
+            // add text to the cell
+            cellEl.innerText = cell.toString();
+            // Add the cell to the row
+            rowEl.appendChild(cellEl);
+        });
+    });
+    // Add the table to the target div
+    (_a = document.getElementById(target)) === null || _a === void 0 ? void 0 : _a.replaceChildren(tableEl);
 };
 // Add event listener to detect when the DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {
